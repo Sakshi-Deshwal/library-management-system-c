@@ -30,7 +30,15 @@ void addBook()
     b1.author[strcspn(b1.author, "\n")] = '\0';
     printf("Enter the book Quantity or copies : \n");
     scanf("%d", &b1.quantity);
-    fprintf(ptr, "%d|%s|%s|%d\n", b1.id, b1.title, b1.author, b1.quantity);
+
+    if (b1.quantity < 0)
+    {
+        printf("Quantity cannot be negative.\n");
+        fclose(ptr);
+        return;
+    }
+
+fprintf(ptr, "%d|%s|%s|%d\n", b1.id, b1.title, b1.author, b1.quantity);
     fclose(ptr);
     printf("Book added successfully!\n");
 }
